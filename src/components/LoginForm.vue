@@ -1,6 +1,9 @@
 <template>
   <div class="login-form">
-    <ElForm :model='formData'>
+    <ElForm
+      :model='formData'
+      :rules='rules'
+      >
       <ElFormItem
         label='Email'
         prop='email'
@@ -11,7 +14,7 @@
         label='Password'
         prop='password'
         size='small'>
-          <ElInput v-model="formData.password"/>
+          <ElInput v-model="formData.password" type='password'/>
       </ElFormItem>
       <ElButton
         type='success'
@@ -32,6 +35,25 @@ export default {
     formData: {
       email: '',
       password: '',
+    },
+    rules: {
+      email: [
+        {
+          required: true,
+          message: 'Please input email address',
+          trigger: 'blur',
+        },
+        {
+          type: 'email',
+          message: 'Please input correct email address',
+          trigger: 'blur',
+        },
+      ],
+      password: {
+        required: true,
+        message: 'Please input password',
+        trigger: 'blur',
+      },
     },
   }),
 };
