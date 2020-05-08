@@ -4,29 +4,33 @@
       :model="formData"
       :rules="rules"
       @submit.native="onSubmit"
-      ref='loginForm'
-      >
+      ref="loginForm"
+    >
       <ElFormItem
         label="Email"
         prop="email"
-        size="small">
+        size="small"
+      >
         <ElInput v-model="formData.email" />
       </ElFormItem>
       <ElFormItem
         label="Password"
         prop="password"
-        size="small">
-        <ElInput v-model="formData.password" type="password" />
+        size="small"
+      >
+        <ElInput v-model="formData.password" type="password"/>
       </ElFormItem>
+
       <ElButton
         type="success"
-        plain size="small"
+        plain
+        size="small"
         native-type="submit"
         :loading="loginInProgress"
-        >Login
-        </ElButton>
+      >
+        Login
+      </ElButton>
     </ElForm>
-    {{ loginInProgress }}
   </div>
 </template>
 
@@ -53,11 +57,13 @@ export default {
           trigger: 'blur',
         },
       ],
-      password: {
-        required: true,
-        message: 'Please input password',
-        trigger: 'blur',
-      },
+      password: [
+        {
+          required: true,
+          message: 'Please input password',
+          trigger: 'blur',
+        },
+      ],
     },
   }),
   computed: {
@@ -78,4 +84,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

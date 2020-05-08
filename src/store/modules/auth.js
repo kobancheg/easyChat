@@ -1,5 +1,5 @@
 import mutations from '@/store/mutations';
-import { firebaseLogin } from '@/services/firebase/auth.service';
+import { firebaseLogin, firebaseLogout } from '@/services/firebase/auth.service';
 
 const {
   IS_LOGGED_IN,
@@ -18,15 +18,20 @@ const authStore = {
   },
   mutations: {
     [IS_LOGGED_IN](state, bool) {
-      state.IS_LOGGED_IN = bool;
+      state.isLoggedIn = bool;
     },
     [LOGIN_LOADER](state, bool) {
-      state.LOGIN_LOADER = bool;
+      state.loginInProgress = bool;
     },
   },
   actions: {
+    setIsLoggedInState: {
+      handler({ commit }, bool) {
+        commit(IS_LOGGED_IN, bool);
+      },
+      root: true,
+    },
     async login({ commit }, { email, password }) {
-      console.log(email, password);
       try {
         commit(LOGIN_LOADER, true);
         await firebaseLogin(email, password);
@@ -34,6 +39,13 @@ const authStore = {
         console.log(err);
       } finally {
         commit(LOGIN_LOADER, false);
+      }
+    },
+    async logout() {
+      try {
+        await firebaseLogout();
+      } catch (err) {
+        console.log(err);
       }
     },
   },

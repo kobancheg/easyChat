@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <div class="login-form-wrap">
-      <div class="login-form-img">
+      <div class="login-form-image">
         <img src="@/assets/login-page-bg.png" alt="">
       </div>
       <LoginForm />
@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .login-page {
-  background-color: #d5e4e4;
+  background-color: #D5E4E4;
   height: 100vh;
   min-height: 780px;
   display: flex;
@@ -37,7 +37,7 @@ export default {
   border-radius: 20px;
   display: flex;
   align-items: center;
-  box-shadow: 0 30px 90px #a7d7d9;
+  box-shadow: 0 30px 90px #A7D7D9;
   height: 600px;
   overflow: hidden;
 }
@@ -48,10 +48,8 @@ export default {
 }
 
 .login-form-image img {
-  height: 100%;
   display: block;
+  height: 100%;
   transform: scale(1.2);
 }
-
-
 </style>
